@@ -15,7 +15,7 @@ public class EvaluationsController {
     @Autowired
     private com.architecturelab.evaluations.useCases.diagnostic.EvaluationInputUseCases evaluationInputUseCases;
 
-    @GetMapping("/diagnostic/{id}")
+    @GetMapping("/evaluation/{id}")
     public ResponseEntity<EvaluationInput> getDiagnosticById(@PathVariable Long id) {
         try {
             EvaluationInput evaluationInput = evaluationInputUseCases.getById(id);
@@ -28,7 +28,7 @@ public class EvaluationsController {
         }
     }
 
-    @PostMapping("/diagnostic")
+    @PostMapping("/evaluation")
     public ResponseEntity<EvaluationInput> createDiagnostic(@RequestBody EvaluationInput evaluationInput) {
         try {
             EvaluationInput _evaluationInput = evaluationInputUseCases.create(evaluationInput);
@@ -38,7 +38,7 @@ public class EvaluationsController {
         }
     }
 
-    @PutMapping("/diagnostic")
+    @PutMapping("/evaluation")
     public ResponseEntity<EvaluationInput> updateDiagnostic(@RequestBody EvaluationInput evaluationInput) {
         try {
             EvaluationInput _evaluationInput = evaluationInputUseCases.update(evaluationInput);
