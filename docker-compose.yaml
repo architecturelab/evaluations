@@ -6,13 +6,12 @@ services:
       dockerfile: Dockerfile
     restart: on-failure
     networks:
-      - default
+      - local-environment
     ports:
       - 8084:80
     volumes:
       - .m2:/root/.m2
 
 networks:
-  default:
-    external:
-      name: local-environment
+  local-environment:
+    external: true
