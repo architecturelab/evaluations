@@ -1,13 +1,14 @@
-piVersion: v1
+apiVersion: v1
 kind: Service
 metadata:
-  name: backend-lb
+  name: evaluations-lb
 spec:
-  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 80
       targetPort: 80
       name: http
   selector:
-    role: backend
+    role: evaluations
+  type: LoadBalancer
+  loadBalancerIP: "34.72.46.9"

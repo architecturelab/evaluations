@@ -10,7 +10,7 @@ EXPOSE 80
 
 RUN mkdir /app
 
-COPY --from=build /home/gradle/src/application/build/libs/workflow-application-0.0.1-SNAPSHOT.jar /app/spring-boot-application.jar
+COPY --from=build /home/gradle/src/application/build/libs/evaluations-application-0.0.1-SNAPSHOT.jar /app/spring-boot-application.jar
 
 ARG ACTIVE_PROFILE
 
