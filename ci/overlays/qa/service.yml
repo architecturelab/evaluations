@@ -11,4 +11,4 @@ spec:
   selector:
     role: evaluations-qa
   type: LoadBalancer
-  loadBalancerIP: "34.135.17.40"
+  loadBalancerIP: "35.193.57.189"
