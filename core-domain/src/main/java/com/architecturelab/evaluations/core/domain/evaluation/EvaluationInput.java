@@ -11,7 +11,7 @@ public class EvaluationInput {
 
     private Long evaluationId;
 
-    private Long activoId;
+    private Long ticketId;
 
     private String descripcion;
 

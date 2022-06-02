@@ -33,4 +33,9 @@ public class EvaluationJpaRepositoryImpl implements EvaluationJpaRepository {
     public Optional<Evaluation> getById(Long id) {
         return evaluationDao.findById(id);
     }
+
+    @Override
+    public Optional<Evaluation> getByTicketId(Long ticketId) {
+        return evaluationDao.findByTicketId(ticketId);
+    }
 }

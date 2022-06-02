@@ -22,7 +22,7 @@ public class EvaluationInputUseCasesImpl implements com.architecturelab.evaluati
     public EvaluationInput create(EvaluationInput evaluationInput) {
         Evaluation evaluation = evaluationJpaRepository.save(new Evaluation(
                 evaluationInput.getEvaluationId(),
-                evaluationInput.getActivoId(),
+                evaluationInput.getTicketId(),
                 evaluationInput.getDescripcion(),
                 evaluationInput.getDecision(),
                 evaluationInput.getUsuarioCreacion(),
@@ -32,7 +32,7 @@ public class EvaluationInputUseCasesImpl implements com.architecturelab.evaluati
         ));
         EvaluationInput input = new EvaluationInput(
                 evaluation.getId(),
-                evaluation.getActivoId(),
+                evaluation.getTicketId(),
                 evaluation.getDescripcion(),
                 evaluation.getDecision(),
                 evaluation.getUsuarioCreacion(),
@@ -48,7 +48,7 @@ public class EvaluationInputUseCasesImpl implements com.architecturelab.evaluati
         Optional<Evaluation> diagnosticData = evaluationJpaRepository.getById(evaluationInput.getEvaluationId());
         if (diagnosticData.isPresent()){
             Evaluation evaluation = diagnosticData.get();
-            evaluation.setActivoId(evaluationInput.getActivoId());
+            evaluation.setTicketId(evaluationInput.getTicketId());
             evaluation.setDescripcion(evaluationInput.getDescripcion());
             evaluation.setDecision(evaluationInput.getDecision());
             evaluation.setUsuarioCreacion(evaluationInput.getUsuarioCreacion());
@@ -59,7 +59,7 @@ public class EvaluationInputUseCasesImpl implements com.architecturelab.evaluati
             Evaluation updated = evaluationJpaRepository.save(evaluation);
             EvaluationInput input = new EvaluationInput(
                     updated.getId(),
-                    updated.getActivoId(),
+                    updated.getTicketId(),
                     updated.getDescripcion(),
                     updated.getDecision(),
                     updated.getUsuarioCreacion(),
@@ -81,7 +81,7 @@ public class EvaluationInputUseCasesImpl implements com.architecturelab.evaluati
         evaluations.forEach(i -> {
             EvaluationInput diagnostic = new EvaluationInput(
                     i.getId(),
-                    i.getActivoId(),
+                    i.getTicketId(),
                     i.getDescripcion(),
                     i.getDecision(),
                     i.getUsuarioCreacion(),
@@ -101,7 +101,27 @@ public class EvaluationInputUseCasesImpl implements com.architecturelab.evaluati
             Evaluation evaluation = diagnosticData.get();
             EvaluationInput input = new EvaluationInput(
                     evaluation.getId(),
-                    evaluation.getActivoId(),
+                    evaluation.getTicketId(),
+                    evaluation.getDescripcion(),
+                    evaluation.getDecision(),
+                    evaluation.getUsuarioCreacion(),
+                    evaluation.getFechaCreacion(),
+                    evaluation.getUsuarioModifica(),
+                    evaluation.getFechaModifica()
+            );
+            return input;
+        }
+        return null;
+    }
+
+    @Override
+    public EvaluationInput getByTicketId(Long id) {
+        Optional<Evaluation> diagnosticData = evaluationJpaRepository.getByTicketId(id);
+        if (diagnosticData.isPresent()){
+            Evaluation evaluation = diagnosticData.get();
+            EvaluationInput input = new EvaluationInput(
+                    evaluation.getId(),
+                    evaluation.getTicketId(),
                     evaluation.getDescripcion(),
                     evaluation.getDecision(),
                     evaluation.getUsuarioCreacion(),
