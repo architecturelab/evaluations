@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: evaluations
+  name: evaluations-qa
 spec:
   replicas: 1
   selector:
     matchLabels:
-      role: evaluations
+      role: evaluations-qa
   minReadySeconds: 20
   strategy:
     rollingUpdate:
@@ -16,11 +16,10 @@ spec:
   template:
     metadata:
       labels:
-        role: evaluations
+        role: evaluations-qa
     spec:
       containers:
-        - name: evaluations
-          image: us.gcr.io/basearchitecture/evaluations
-          # image: us-central1-docker.pkg.dev/basearchitecture/quickstart-docker-repo/static-site:f8aa8222c1f8b7325b2612303146eb9d1aa4dd33
+        - name: evaluations-qa
+          image: us-central1-docker.pkg.dev/basearchitecture/quickstart-docker-repo/evaluations-qa
           ports:
             - containerPort: 80
