@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: evaluations-qa
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      role: evaluations-qa
+  minReadySeconds: 20
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        role: evaluations-qa
+    spec:
+      containers:
+        - name: evaluations-qa
+          image: us-central1-docker.pkg.dev/basearchitecture/quickstart-docker-repo/evaluations-qa
+          ports:
+            - containerPort: 80
