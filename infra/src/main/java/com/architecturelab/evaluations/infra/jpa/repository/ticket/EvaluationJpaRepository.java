@@ -12,4 +12,6 @@ public interface EvaluationJpaRepository {
 
     public Optional<Evaluation> getById(Long id);
 
+    Optional<Evaluation> getByTicketId(Long ticketId);
+
 }

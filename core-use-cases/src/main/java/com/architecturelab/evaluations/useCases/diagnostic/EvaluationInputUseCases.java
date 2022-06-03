@@ -16,4 +16,5 @@ public interface EvaluationInputUseCases {
 
     public EvaluationInput getById(Long id);
 
+    public EvaluationInput getByTicketId(Long id);
 }
